@@ -1,4 +1,4 @@
-name: Provision Roboshop Infrastructure
+name: Delete Project Infrastructure
 on: [workflow_dispatch]
 jobs:
   DEV-Destroy:
