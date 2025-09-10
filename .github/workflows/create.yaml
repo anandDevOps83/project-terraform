@@ -1,0 +1,11 @@
+name: Provision Project Infrastructure
+on: [workflow_dispatch]
+jobs:
+  DEV-APPLY:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Terraform Init
+        run: terraform init -backend-config=env-dev/state.tfvars
+      - name: Terraform Apply
+        run: terraform apply -var-file=env-dev/main.tfvars -auto-approve -var vault_token=${{ secrets.VAULT_TOKEN }}
