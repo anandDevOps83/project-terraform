@@ -11,5 +11,4 @@ module "vpc" {
     default_vpc_id      =   var.vpc["default_vpc_id"]
     default_vpc_rt      =   var.vpc["default_vpc_rt"]
     default_vpc_cidr    =   var.vpc["default_vpc_cidr"]
-    vault_token         =   var.vault_token
 }
