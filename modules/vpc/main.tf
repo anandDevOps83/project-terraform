@@ -196,6 +196,6 @@ resource "aws_nat_gateway" "main" {
   subnet_id     = aws_subnet.public.*.id[count.index]
 
   tags = {
-    Name = "nat-gw-${split("-", var.availability_zones)[2]}"
+    Name = "nat-gw-${split("-", var.availability_zones[count.index])[2]}"
   }
-}  
+}
