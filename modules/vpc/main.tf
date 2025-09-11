@@ -27,7 +27,7 @@ resource "aws_subnet" "web" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "web-subnet-${spilt("-", var.availability_zones[count.index])[2]}"
+    Name = "web-subnet-${split("-", var.availability_zones[count.index])[2]}"
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "app" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "app-subnet-${spilt("-", var.availability_zones[count.index])[2]}"
+    Name = "app-subnet-${split("-", var.availability_zones[count.index])[2]}"
   }
 }
 
@@ -51,7 +51,7 @@ resource "aws_subnet" "db" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "db-subnet-${spilt("-", var.availability_zones[count.index])[2]}"
+    Name = "db-subnet-${split("-", var.availability_zones[count.index])[2]}"
   }
 }
 
@@ -63,7 +63,7 @@ resource "aws_subnet" "public" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "public-subnet-${spilt("-", var.availability_zones[count.index])[2]}"
+    Name = "public-subnet-${split("-", var.availability_zones[count.index])[2]}"
   }
 }
 
