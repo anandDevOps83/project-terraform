@@ -4,3 +4,4 @@ variable "env" {}
 variable "subnet_ids" {}
 variable "zone_id" {}
 variable "lb_rule_priority" {}
+variable "allow_port" {}
