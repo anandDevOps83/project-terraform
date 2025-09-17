@@ -29,42 +29,42 @@ app          = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 
     user = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 
     cart = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 
     shipping = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 
     payment = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 
     dispatch = {
         subnet_ref    = "app"
         instance_type = "t3.small"
         allow_port    = 80
-        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24"]
+        allow_sg_cidr = ["10.10.2.0/24", "10.10.3.0/24", "10.10.4.0/24", "10.10.5.0/24"]
     }
 }
 
