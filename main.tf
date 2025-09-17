@@ -63,3 +63,17 @@ module "app" {
     vault_token     = var.vault_token
     zone_id         = var.zone_id
 }
+
+module "public" {
+    depends_on = [module.vpc]
+    source     = "./modules/load-balancer"
+
+    for_each        = var.public
+    name            = each.key
+    subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
+    vpc_id          = module.vpc.vpc_id
+    env             = var.env
+    zone_id         = var.zone_id
+    allow_port      = each.value["allow_port"]
+
+}    

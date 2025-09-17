@@ -97,3 +97,10 @@ db          = {
         allow_sg_cidr = ["10.10.4.0/24", "10.10.5.0/24"]
     }
 }
+
+public          = {
+    frontend = {
+        subnet_ref    = "public"
+        allow_port    = 80
+        }
+}
