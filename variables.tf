@@ -6,3 +6,4 @@ variable "db" {}
 variable "vault_token" {}
 variable "web" {}
 variable "app" {}
+variable "public" {}
