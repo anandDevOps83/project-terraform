@@ -75,5 +75,5 @@ module "public" {
     env             = var.env
     zone_id         = var.zone_id
     allow_port      = each.value["allow_port"]
-    frontend_instance_id = module.web.aws_instance.main.id
-}    
+    instance_id     = module.web.output.frontend_instance_id
+    }    

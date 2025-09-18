@@ -1,3 +1,3 @@
-#output "frontend_instance_id" {
-#  value       = module.web.instance_id
-#}
+output "frontend_instance_id" {
+  value = aws_instance.main.tags.Name == "frontend-dev" ? aws_instance.main.instance_id : "Instance name mismatch, ID not exported"
+}
