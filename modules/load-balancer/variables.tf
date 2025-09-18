@@ -4,6 +4,6 @@ variable "env" {}
 variable "subnet_ids" {}
 variable "zone_id" {}
 variable "allow_port" {}
-variable "frontend_instance_id" {}
+variable "instance_id" {}
 
 
