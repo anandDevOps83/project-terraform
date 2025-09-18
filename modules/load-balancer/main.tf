@@ -61,7 +61,7 @@ resource "aws_lb_target_group" "main" {
 
 resource "aws_lb_target_group_attachment" "main" {
   target_group_arn = aws_lb_target_group.main.arn
-  target_id        = module.web.aws_instance.main.id
+  target_id        = var.frontend_instance_id
   port             = 80
 }
 

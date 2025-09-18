@@ -7,3 +7,4 @@ variable "vault_token" {}
 variable "web" {}
 variable "app" {}
 variable "public" {}
+variable "frontend_instance_id" {}
