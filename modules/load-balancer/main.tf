@@ -1,5 +1,4 @@
 resource "aws_security_group" "load-balancer" {
-  count    = var.name == "frontend" ? 1 : 0
   name        = "${var.name}-${var.env}-alb-sg"
   description = "${var.name}-${var.env}-alb-sg"
   vpc_id      = var.vpc_id
@@ -32,7 +31,6 @@ resource "aws_security_group" "load-balancer" {
 }
 
 resource "aws_lb" "main" {
-  count    = var.name == "frontend" ? 1 : 0
   name               = "${var.name}-${var.env}"
   internal           = false
   load_balancer_type = "application"
