@@ -7,4 +7,3 @@ variable "vault_token" {}
 variable "web" {}
 variable "app" {}
 variable "public" {}
-variable "instance_id" {}
