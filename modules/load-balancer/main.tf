@@ -60,15 +60,21 @@ resource "aws_lb_target_group" "main" {
 
 }
 
-resource "aws_lb_listener_rule" "listener-rule" {
-  listener_arn = var.listener_arn
-  priority     = var.lb_rule_priority
+resource "aws_lb_listener" "public-http" {
+  load_balancer_arn = aws_lb.main.arn
+  port              = "80"
+  protocol          = "HTTP"
 
-  action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.main.arn
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
-}  
+}
 
 resource "aws_route53_record" "lb" {
   zone_id = var.zone_id
