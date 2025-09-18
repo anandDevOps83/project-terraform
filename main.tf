@@ -76,4 +76,5 @@ module "public" {
     zone_id         = var.zone_id
     allow_port      = each.value["allow_port"]
     dns_name        = var.dns_name
+    listener_arn    = var.listener_arn
 }    

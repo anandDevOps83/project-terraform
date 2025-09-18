@@ -7,3 +7,5 @@ variable "vault_token" {}
 variable "web" {}
 variable "app" {}
 variable "public" {}
+variable "dns_name" {}
+variable "listener_arn" {}
