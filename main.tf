@@ -65,7 +65,7 @@ module "app" {
 }
 
 module "public" {
-    depends_on = [module.vpc]
+    depends_on = [module.ec2]
     source     = "./modules/load-balancer"
 
     for_each        = var.public

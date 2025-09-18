@@ -43,7 +43,6 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "main" {
-  count    = var.name == "frontend" ? 1 : 0  
   name     = "${var.name}-${var.env}"
   port     = var.allow_port
   protocol = "HTTP"
@@ -58,6 +57,12 @@ resource "aws_lb_target_group" "main" {
     timeout             = 3
   }
 
+}
+
+resource "aws_lb_target_group_attachment" "main" {
+  target_group_arn = aws_lb_target_group.main.arn
+  target_id        = module.ec2.output.frontend_instance_id
+  port             = 80
 }
 
 resource "aws_lb_listener" "public-http" {

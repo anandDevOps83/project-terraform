@@ -99,7 +99,7 @@ db          = {
 }
 
 public          = {
-    frontend = {
+    loadbalancer = {
         subnet_ref    = "public"
         allow_port    = 80
         }
