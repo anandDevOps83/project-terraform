@@ -88,3 +88,18 @@ resource "aws_route53_record" "lb" {
   ttl     = 10
   records = [aws_lb.main.dns_name]
 }
+
+resource "aws_lb_listener_rule" "listener-rule" {
+  listener_arn = aws_lb_listener.public-http.arn
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.main.arn
+  }
+
+  condition {
+    host_header {
+      values = [aws_route53_record.lb.fqdn]
+    }
+  }
+}
