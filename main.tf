@@ -13,67 +13,76 @@ module "vpc" {
     default_vpc_cidr    =   var.vpc["default_vpc_cidr"]
 }
 
-module "db" {
+module "eks" {
     depends_on = [module.vpc]
-    source     = "./modules/ec2"
+    source = "./modules/eks"
+    env    = var.env
+    subnet_ids  =   module.vpc.app_subnet_ids
+    
 
-    for_each        = var.db
-    name            = each.key
-    instance_type   = each.value["instance_type"]
-    allow_port      = each.value["allow_port"]
-    allow_sg_cidr   = each.value["allow_sg_cidr"]
-    subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
-    vpc_id          = module.vpc.vpc_id
-    env             = var.env
-    bastion_nodes   = var.bastion_nodes
-    vault_token     = var.vault_token
-    zone_id         = var.zone_id
+
 }
+# module "db" {
+#     depends_on = [module.vpc]
+#     source     = "./modules/ec2"
 
-module "web" {
-    depends_on = [module.vpc]
-    source     = "./modules/ec2"
+#     for_each        = var.db
+#     name            = each.key
+#     instance_type   = each.value["instance_type"]
+#     allow_port      = each.value["allow_port"]
+#     allow_sg_cidr   = each.value["allow_sg_cidr"]
+#     subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
+#     vpc_id          = module.vpc.vpc_id
+#     env             = var.env
+#     bastion_nodes   = var.bastion_nodes
+#     vault_token     = var.vault_token
+#     zone_id         = var.zone_id
+# }
 
-    for_each        = var.web
-    name            = each.key
-    instance_type   = each.value["instance_type"]
-    allow_port      = each.value["allow_port"]
-    allow_sg_cidr   = each.value["allow_sg_cidr"]
-    subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
-    vpc_id          = module.vpc.vpc_id
-    env             = var.env
-    bastion_nodes   = var.bastion_nodes
-    vault_token     = var.vault_token
-    zone_id         = var.zone_id
-}
+# module "web" {
+#     depends_on = [module.vpc]
+#     source     = "./modules/ec2"
 
-module "app" {
-    depends_on = [module.vpc]
-    source     = "./modules/ec2"
+#     for_each        = var.web
+#     name            = each.key
+#     instance_type   = each.value["instance_type"]
+#     allow_port      = each.value["allow_port"]
+#     allow_sg_cidr   = each.value["allow_sg_cidr"]
+#     subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
+#     vpc_id          = module.vpc.vpc_id
+#     env             = var.env
+#     bastion_nodes   = var.bastion_nodes
+#     vault_token     = var.vault_token
+#     zone_id         = var.zone_id
+# }
 
-    for_each        = var.app
-    name            = each.key
-    instance_type   = each.value["instance_type"]
-    allow_port      = each.value["allow_port"]
-    allow_sg_cidr   = each.value["allow_sg_cidr"]
-    subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
-    vpc_id          = module.vpc.vpc_id
-    env             = var.env
-    bastion_nodes   = var.bastion_nodes
-    vault_token     = var.vault_token
-    zone_id         = var.zone_id
-}
+# module "app" {
+#     depends_on = [module.vpc]
+#     source     = "./modules/ec2"
 
-module "public" {
-    depends_on = [module.web]
-    source     = "./modules/load-balancer"
+#     for_each        = var.app
+#     name            = each.key
+#     instance_type   = each.value["instance_type"]
+#     allow_port      = each.value["allow_port"]
+#     allow_sg_cidr   = each.value["allow_sg_cidr"]
+#     subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
+#     vpc_id          = module.vpc.vpc_id
+#     env             = var.env
+#     bastion_nodes   = var.bastion_nodes
+#     vault_token     = var.vault_token
+#     zone_id         = var.zone_id
+# }
 
-    for_each        = var.public
-    name            = each.key
-    subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
-    vpc_id          = module.vpc.vpc_id
-    env             = var.env
-    zone_id         = var.zone_id
-    allow_port      = each.value["allow_port"]
-    instance_id     = module.web["frontend"].frontend_instance_id
-    }    
+# module "public" {
+#     depends_on = [module.web]
+#     source     = "./modules/load-balancer"
+
+#     for_each        = var.public
+#     name            = each.key
+#     subnet_ids      = module.vpc.subnets[each.value["subnet_ref"]]
+#     vpc_id          = module.vpc.vpc_id
+#     env             = var.env
+#     zone_id         = var.zone_id
+#     allow_port      = each.value["allow_port"]
+#     instance_id     = module.web["frontend"].frontend_instance_id
+#     }    
