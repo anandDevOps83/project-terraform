@@ -4,6 +4,6 @@ variable "bastion_nodes" {}
 variable "zone_id" {}
 variable "db" {}
 variable "vault_token" {}
-variable "web" {}
-variable "app" {}
-variable "public" {}
+# variable "web" {}
+# variable "app" {}
+# variable "public" {}
