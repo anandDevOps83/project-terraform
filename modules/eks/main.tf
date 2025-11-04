@@ -2,7 +2,8 @@ resource "aws_eks_cluster" "main" {
   name = "${var.env}-eks"
 
   access_config {
-    authentication_mode = "API"
+    authentication_mode = "API_AND_CONFIG_MAP"
+    bootstrap_cluster_creator_admin_permissions = true
   }
 
   role_arn = aws_iam_role.eks-cluster.arn
@@ -28,4 +29,11 @@ resource "aws_eks_node_group" "main" {
     max_size     = each.value["max_size"]
     min_size     = each.value["min_size"]
   }
+}
+
+resource "aws_eks_addon" "addons" {
+  for_each     = var.add_ons
+  cluster_name = aws_eks_cluster.main.name
+  addon_name   = each.key
+  addon_version = each.value
 }
