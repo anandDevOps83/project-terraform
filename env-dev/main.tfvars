@@ -118,8 +118,8 @@ eks         = {
   }
   add_ons   = {
     vpc-cni = "v1.20.4-eksbuild.1"
-    coredns = "v1.12.4-eksbuild.1"
-    kube-proxy = "v1.34.0-eksbuild.4"
+    coredns = "v1.11.3-eksbuild.1"
+    kube-proxy = "v1.31.10-eksbuild.12"
   }
 
   eks-iam-access = {
