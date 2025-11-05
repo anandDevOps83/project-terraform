@@ -21,6 +21,7 @@ module "eks" {
     node_groups     = var.eks["node_groups"]
     eks_version     = var.eks["eks_version"]
     add_ons         = var.eks["add_ons"]
+    eks-iam-access  = var.eks["eks-iam-access"]
 }
 
 # module "db" {

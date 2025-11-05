@@ -122,5 +122,16 @@ eks         = {
     kube-proxy = "v1.34.0-eksbuild.4"
   }
 
-
+  eks-iam-access = {
+    workstation = {
+      principal_arn = "arn:aws:iam::322848936941:role/workstation-role"
+      policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+      kubernetes_groups  = []
+    }
+    sso-user = {
+      principal_arn = "arn:aws:iam::322848936941:root"
+      policy_arn  = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+      kubernetes_groups  = []
+    }
+  }
 }
