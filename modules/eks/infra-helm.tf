@@ -29,7 +29,7 @@ metadata:
 spec:
   provider:
     vault:
-      server: "http://vault-internal.${var.env}.adevops.click:8200"
+      server: "http://vault-internal.adevops.click:8200"
       path: "project-${var.env}"
       version: "v2"
       auth:
