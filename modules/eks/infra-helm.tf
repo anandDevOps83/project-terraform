@@ -12,7 +12,7 @@ resource "helm_release" "external-secrets" {
   depends_on = [null_resource.kube-config]  
   name       = "external-secrets"
   repository = "https://charts.external-secrets.io"
-  chart      = "rexternal-secrets"
+  chart      = "external-secrets"
   namespace  = "kube-system"
   wait       = true
 }
